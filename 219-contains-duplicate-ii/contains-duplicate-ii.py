@@ -5,11 +5,14 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
-        num_indices = {}
+        seen = set()
 
         for i in range(len(nums)):
-            if nums[i] in num_indices and i - num_indices[nums[i]]<=k:
+            if nums[i] in seen:
                 return True
-            num_indices[nums[i]] = i
+            seen.add(nums[i])
+            
+            if len(seen) > k:
+                seen.remove(nums[i - k])
         return False
             
