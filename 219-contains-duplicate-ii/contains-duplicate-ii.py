@@ -8,7 +8,7 @@ class Solution(object):
         num_indices = {}
 
         for i in range(len(nums)):
-            if nums[i] in num_indices and abs(i - num_indices[nums[i]])<=k:
+            if nums[i] in num_indices and i - num_indices[nums[i]]<=k:
                 return True
             num_indices[nums[i]] = i
         return False
