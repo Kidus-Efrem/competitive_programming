@@ -4,6 +4,8 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        while "()" in  s or "[]" in s or "{}" in s: 
-            s = s.replace ("()", "").replace("[]", "").replace ("{}", "")
-        return s == ""
+        while '()' in s or '{}' in s or '[]' in s:
+            s = s.replace('()', '')
+            s = s.replace('{}', '')
+            s = s.replace('[]', '')
+        return s == ''
