@@ -6,11 +6,11 @@
 
 class Solution:
     def hasCycle(self, head):
-        seen = set()
-        cur = head
-        while cur:
-            if cur in seen:
+        slow, fast = head, head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
                 return True
-            seen.add(cur)
-            cur = cur.next
         return False
