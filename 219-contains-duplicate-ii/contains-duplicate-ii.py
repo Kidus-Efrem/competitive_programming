@@ -5,10 +5,13 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
-        num_indcies = {}
-        for i in range(len(nums)):
-            if nums[i] in num_indcies and i - num_indcies[nums[i]]<=k:
+        seen =set()
+
+        for i,num in enumerate(nums):
+            if num in seen:
                 return True
-            num_indcies[nums[i]]=i
+            seen.add(num)
+
+            if len(seen)>k:
+                seen.remove(nums[i-k])
         return False
-            
