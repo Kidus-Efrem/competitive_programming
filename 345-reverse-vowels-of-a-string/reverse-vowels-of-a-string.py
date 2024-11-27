@@ -13,9 +13,7 @@ class Solution(object):
                 l+=1
             while r>l and s[r] not in vowels:
                 r-=1
-            temp = s_list[r]
-            s_list[r] = s_list[l]
-            s_list[l] = temp
+            s_list[l], s_list[r] = s_list[r], s_list[l]
             l, r = l+1, r-1
 
         return ''.join(s_list)
