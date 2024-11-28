@@ -1,24 +1,25 @@
-class Solution(object):
-    def intersect(self, nums1, nums2):
-        """
-        :type nums1: List[int]
-        :type nums2: List[int]
-        :rtype: List[int]
-        """
-        newArr = []
-        if len(nums1)> len( nums2):
-            x= nums2
-            y= nums1
-        else:
-            x = nums1
-            y = nums2
+class Solution:
+    def intersect(self, nums1, nums2) :
+        # Sort both arrays
+        nums1.sort()
+        nums2.sort()
 
-        
-        for i in x:
-            if i in y:
-                y.remove(i)
-                newArr.append(i)
-        return newArr
+        # List to store the result
+        result = []
 
+        # Two pointers to iterate through both arrays
+        i, j = 0, 0
+        while i < len(nums1) and j < len(nums2):
+            if nums1[i] == nums2[j]:
+                # If elements are equal, add to the result list
+                result.append(nums1[i])
+                i += 1
+                j += 1
+            elif nums1[i] < nums2[j]:
+                # If nums1's element is smaller, move pointer i
+                i += 1
+            else:
+                # If nums2's element is smaller, move pointer j
+                j += 1
 
-        
+        return result
