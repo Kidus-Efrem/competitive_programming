@@ -7,4 +7,4 @@ class Solution:
             temp = s[i]
             s[i]= s[len(s)-1-i]
             s[len(s)-i-1] = temp
-        print(s)
+        return s
