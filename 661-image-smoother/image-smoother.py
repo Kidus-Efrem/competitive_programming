@@ -7,12 +7,12 @@ class Solution:
         for i in range(m):
             for j in range(n):
                 
-                total, count= img[i][j], 1
-                for di, dj in directions:
-                    ni, nj = i+di, j+dj
-                    if 0<= ni < m and 0 <=nj < n:
-                        total += img[ni][nj]
-                        count += 1
+                total, count= 0, 0
+                for x in (i-1, i, i+1):
+                    for y in (j-1, j, j+1):
+                        if 0<= x < m and 0 <=y < n:
+                            total += img[x][y]
+                            count += 1
                 output[i][j] = total//count
 
         print(output)
