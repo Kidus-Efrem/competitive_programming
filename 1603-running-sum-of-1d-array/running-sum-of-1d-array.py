@@ -1,13 +1,8 @@
-class Solution(object):
-    def runningSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
-        result = []
-        current_sum = 0
-        for num in nums:
-            current_sum += num
-            result.append(current_sum)
-        return result
-        
+class Solution:
+    def runningSum(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        for i in range(n):
+            if i==0:
+                continue
+            nums[i]+=nums[i-1]
+        return nums
