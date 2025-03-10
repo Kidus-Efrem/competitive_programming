@@ -4,6 +4,6 @@ class Solution:
         y = n
         def checker(a):
             if a <=1:
-                return a
+                return True if a==1 else False
             return checker(a/4)
-        return (True if checker(x)==1 else False)
+        return (checker(x))
