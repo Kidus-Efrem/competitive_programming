@@ -1,0 +1,36 @@
+class Solution:
+    def ladderLength(self, b: str, e: str, wordList:
+         List[str]) -> int:
+        dir = [(0, 1),(1, 0), (-1, 0), (0, -1)]
+        print(wordList, 'wordlist')
+        wordList  = set(wordList)
+        
+
+        distance = 1
+        queue = deque()
+        queue.append((b, set()))
+        while queue:
+            distance +=1
+            # print(queue)
+            size = len(queue)
+            for i in range(len(queue)):
+                cur, visited = queue.popleft()
+                if cur == e:
+                    return distance-1
+                for j in range(len(cur)):
+                    for i in range(97, 123):
+                        if cur[0:j]+chr(i)+cur[j+1:] in wordList and cur[0:j]+chr(i)+cur[j+1:] not in visited and cur[0:j]+chr(i)+cur[j+1:] != cur:
+
+                            visited.add(cur[0:j]+chr(i)+cur[j+1:])
+                            queue.append((cur[0:j]+chr(i)+cur[j+1:], visited))
+
+        return 0
+
+
+
+                
+
+                
+        
+
+                
