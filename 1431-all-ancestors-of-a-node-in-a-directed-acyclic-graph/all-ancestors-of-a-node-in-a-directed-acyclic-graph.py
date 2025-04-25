@@ -1,24 +1,28 @@
+from collections import defaultdict
+from typing import List
+
 class Solution:
     def getAncestors(self, n: int, edges: List[List[int]]) -> List[List[int]]:
-        
-        d = {i:[] for i in range(n)}
-        ind = defaultdict(int)
+        graph = defaultdict(list)
         for u, v in edges:
-            d[u].append(v)
-            ind[v]+=1
+            graph[v].append(u)  # reverse the edges: from child → parent
 
-        ans = [set() for i in range(n)]
+        memo = {}  # node -> set of ancestors
 
-        queue = deque([i for i in range(n) if ind[i]==0])
+        def dfs(node):
+            if node in memo:
+                return memo[node]
 
-        while queue:
-            for _ in range(len(queue)):
-                cur = queue.popleft()
-                for child in d[cur]:
-                    ind[child]-=1
-                    ans[child].add(cur)
-                    ans[child].update(ans[cur])
-                    if ind[child]==0:
-                        queue.append(child)
-        ans = [sorted(list(i)) for i in ans]
-        return ans
+            ancestors = set()
+            for parent in graph[node]:
+                ancestors.add(parent)  # direct parent
+                ancestors.update(dfs(parent))  # all ancestors of the parent
+
+            memo[node] = ancestors
+            return ancestors
+
+        result = []
+        for i in range(n):
+            result.append(sorted(dfs(i)))  # sort the ancestors for each node
+
+        return result
