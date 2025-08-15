@@ -29,8 +29,8 @@ class Solution:
                         ans+=x
                         memo[(i, cand)] = x
             # print('i ans' ,i , ans)
-            memo[i] = ans
-            return memo[i]
+            # memo[i] = ans
+            return ans
         ans = back(0)
         # print(memo)
 
