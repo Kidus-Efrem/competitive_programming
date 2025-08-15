@@ -20,11 +20,7 @@ class Solution:
                     ans+=x
             if  i+1 < len(s):
                 cand = s[i]+s[i+1]
-                if int(cand) > 26 or int(cand) < 1 or cand[0]=='0':
-                    ans+=0
-
-
-                else:
+                if not (int(cand) > 26 or int(cand) < 1 or cand[0]=='0'):
                     # print("working 2", cand[0])
                     if (i, cand) in memo:
                         ans+=memo[(i, cand)]
