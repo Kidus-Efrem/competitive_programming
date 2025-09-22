@@ -1,16 +1,13 @@
 class Solution:
     def fib(self, n: int) -> int:
-        if n==0:
-            return 0
-        if n ==1:
-            return 1
-        def iter():
-            dp = [0 for i in range(n+1)]
-            dp[0]= 0
-            dp[1] = 1
-            for i in range(2,n+1):
-                dp[i]  = dp[i-1]+ dp[i-2]
-            return dp
-        temp = iter()
-        print(temp)
-        return temp[n]
+        memo = defaultdict(int)
+        def back(i):
+            if  i == 0 :
+                return 0
+            if i ==1:
+                return 1
+            if  i in memo:
+                return memo[i]
+            memo[i] =  back(i-1)+back(i-2)
+            return memo[i]
+        return back(n)
