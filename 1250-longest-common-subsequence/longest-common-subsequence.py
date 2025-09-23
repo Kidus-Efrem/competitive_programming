@@ -12,7 +12,8 @@ class Solution:
             total = 0
             if a[i] == b[j]:
                 total =  recur(i+1, j+1)+1
-            total = max(recur(i+1, j), recur(i, j+1), total)
+            else:
+                total = max(recur(i+1, j), recur(i, j+1), total)
             memo[(i, j)] = total
             return total
 
