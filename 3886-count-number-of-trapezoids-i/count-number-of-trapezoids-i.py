@@ -10,10 +10,9 @@ class Solution:
             n = table[k]
             table[k] = ((n * (n - 1)) // 2)
             total = (table[k] + total) % mod
-        print(table) 
         ans = 0
         for k in table.keys():
             total -= table[k]
-            ans += (total * table[k]) % mod
-        return ans % mod
+            ans = (ans  + (total * table[k])) % mod
+        return ans
 
