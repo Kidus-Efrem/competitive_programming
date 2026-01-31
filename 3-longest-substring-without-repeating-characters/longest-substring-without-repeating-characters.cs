@@ -5,7 +5,7 @@ public class Solution {
         int l  = 0;
         int ans = 0;
         for (int i = 0 ; i < s.Length; i++){
-            while (l<i && chars.Contains(s[i])){
+            while (chars.Contains(s[i])){
                 chars.Remove(s[l]);
                 l+=1;
             }
